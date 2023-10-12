@@ -8,8 +8,6 @@ st.set_page_config(
 
 st.write("# ¡Bienvenido a Machine Learning Projects! 👋")
 
-st.sidebar.success("Select a demo above.")
-
 st.markdown("""
 ¡Hola a todos! Soy Mateo, un entusiasta apasionado por el mundo de la inteligencia artificial y el aprendizaje automático. Este es mi espacio personal donde compartiré mi viaje de aprendizaje en el emocionante campo de Machine Learning.
 
