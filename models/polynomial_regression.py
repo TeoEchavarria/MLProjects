@@ -12,33 +12,34 @@ import streamlit as st
 
 import numpy as np
 
-def PolynomialRegression(dataset, x_col, y_col, grate):
+class PolynomialRegression:   
+    def __init__(self, dataset, x_col, y_col, grate):
 
-        X = dataset[x_col].values
-        y = dataset[y_col].values
-                
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 1/3, random_state = 0)
-        
-        poly_reg = PolynomialFeatures(degree = grate+1)
-        
-        X_poly = poly_reg.fit_transform(X.reshape(-1, 1))
-        
-        lin_reg_2 = LinearRegression()
-        lin_reg_2.fit(X_poly, y)
-        
-        X_grid = np.arange(min(X), max(X), 0.1)
-        X_grid = X_grid.reshape(len(X_grid), 1)
+            X = dataset[x_col].values
+            y = dataset[y_col].values
+                    
+            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 1/3, random_state = 0)
+            
+            poly_reg = PolynomialFeatures(degree = grate+1)
+            
+            X_poly = poly_reg.fit_transform(X.reshape(-1, 1))
+            
+            lin_reg_2 = LinearRegression()
+            lin_reg_2.fit(X_poly, y)
+            
+            X_grid = np.arange(min(X), max(X), 0.1)
+            X_grid = X_grid.reshape(len(X_grid), 1)
 
-        y_pred = lin_reg_2.predict(poly_reg.fit_transform(X_grid))
-        
-        train_data = pd.DataFrame({x_col :X_train.tolist(), y_col : y_train.tolist()})
-        
-        predict_data =  pd.DataFrame({ x_col : X_grid.reshape(1, -1)[0], y_col : y_pred.tolist()})
-        
+            y_pred = lin_reg_2.predict(poly_reg.fit_transform(X_grid))
+            
+            train_data = pd.DataFrame({x_col :X.tolist(), y_col : y.tolist()})
+            
+            predict_data =  pd.DataFrame({ x_col : X_grid.reshape(1, -1)[0], y_col : y_pred.tolist()})
+            
 
-        fig, ax = plt.subplots()
-        sns.scatterplot(x=x_col, y=y_col, data= train_data, color = "m")
-        sns.lineplot(x=x_col, y= y_col, color='black', data= predict_data)
-        plt.xlabel("Experience")
-        plt.ylabel("salary")
-        st.pyplot(fig)
+            fig, ax = plt.subplots()
+            sns.scatterplot(x=x_col, y=y_col, data= train_data, color = "m")
+            sns.lineplot(x=x_col, y= y_col, color='black', data= predict_data)
+            plt.xlabel("Experience")
+            plt.ylabel("salary")
+            st.pyplot(fig)
