@@ -18,8 +18,6 @@ class PolynomialRegression:
             X = dataset[x_col].values
             y = dataset[y_col].values
                     
-            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 1/3, random_state = 0)
-            
             poly_reg = PolynomialFeatures(degree = grate+1)
             
             X_poly = poly_reg.fit_transform(X.reshape(-1, 1))

@@ -9,18 +9,18 @@ import pandas as pd
 class SimpleRegressionPage:
     def __init__(self):
         model = st.selectbox("Simple Models", ["Linear Regression", "Polynomial Regression"])
-        dataset = st.selectbox("DataSet", ["Salary Vs Experience", "Position Salaries" , "Otro Conjunto de Datos"])
+        dataset = st.selectbox("DataSet", ["Salary Vs Experience", "Position Salaries", "Polynomial Example",  "Otro Conjunto de Datos"])
+        
+        real_name_dataset = {
+            "Salary Vs Experience" : "Salary_Data", 
+            "Position Salaries"    : "Position_Salaries", 
+            "Polynomial Example"   : "polynomial-regression", 
+        }
         
         if dataset == "Otro Conjunto de Datos":
             dataset = ReadCsvModel( st.file_uploader("Otro Documento"), None)
-        elif dataset == "Salary Vs Experience":
-            dataset = ReadCsvModel("Salary_Data", "simple_regression")
-        elif dataset == "Position Salaries":
-            dataset = ReadCsvModel("Position_Salaries", "simple_regression")
-            
-        else:
-            dataset = None
-        
+        dataset = ReadCsvModel(real_name_dataset[dataset], "simple_regression")
+
         if dataset is not None:
             cols = dataset.columns.tolist()
             
