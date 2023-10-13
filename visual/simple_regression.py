@@ -20,9 +20,10 @@ class SimpleRegressionPage:
         if dataset is not None:
             cols = dataset.columns.tolist()
             
-            col1, col2 = st.columns(2)
-            x_col = col1.selectbox('Columnas independientes (X)', cols)
-            y_col = col2.selectbox('Columna dependiente (y)', cols)
+            if model == "Linear Regression":
+                col1, col2 = st.columns(2)
+                x_col = col1.selectbox('Columnas independientes (X)', cols)
+                y_col = col2.selectbox('Columna dependiente (y)', cols)
             
             
         if st.button("Predecir"):
