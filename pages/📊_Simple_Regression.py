@@ -1,6 +1,6 @@
 
 import streamlit as st
 
-from visual.simple_regression import SimpleRegressionPage
+from visual.simple_regression_page import SimpleRegressionPage
 
 SimpleRegressionPage()
