@@ -23,8 +23,6 @@ class LinealModel:
                 
                 X_test = X_test.reshape(-1, 1)
                 
-                print(X_test.reshape(1, -1))
-                
                 y_pred = regression.predict(X_test)
                 
                 train_data = pd.DataFrame({x_col :X_train.tolist(), y_col : y_train.tolist()})
