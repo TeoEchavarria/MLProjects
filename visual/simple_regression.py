@@ -4,6 +4,15 @@ from models.read_csv_model import ReadCsvModel
 
 import pandas as pd 
 
+from sklearn.linear_model import LinearRegression
+
+from sklearn.model_selection import train_test_split
+
+import pandas as pd
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 class SimpleRegressionPage:
     def __init__(self):
         model = st.selectbox("Simple Models", ["Linear Regression", "Polynomial Regression"])
