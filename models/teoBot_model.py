@@ -2,7 +2,7 @@ from ctransformers import AutoModelForCausalLM, AutoTokenizer
 import streamlit as st
 
 class TeoBotModel:
-    @st.cache_data
+    @st.cache_resource
     def __init__(_self):
         #self.llm = ctransformers(
         #model = "thebloke/mistral-7b-instruct-v0.1.Q4_K_M.gguf",
